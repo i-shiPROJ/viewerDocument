@@ -12,7 +12,7 @@
 
 1. Скопируйте файл `--.env.example` в `.env`:
 ```bash
-cp .env.example .env
+cp --.env.example .env
 ```
 
 2. Отредактируйте файл `.env` и укажите ваши настройки API:

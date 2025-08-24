@@ -245,3 +245,62 @@ body {
   display: flex;
   justify-content: center;
 }
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  body {
+    font-size: 13px;
+  }
+}
+
+/* Утилитарные классы для адаптивности */
+.hidden-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.hidden-tablet {
+  @media (max-width: 992px) {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+.visible-tablet {
+  @media (min-width: 993px) {
+    display: none !important;
+  }
+}

@@ -36,6 +36,12 @@ const handleRetry = () => {
   border: 1px solid #DC3545;
   border-radius: 8px;
   color: #DC3545;
+  
+  @media (max-width: 576px) {
+    padding: 12px;
+    margin: 12px 0;
+    gap: 8px;
+  }
 
   .content {
     flex: 1;
@@ -44,12 +50,23 @@ const handleRetry = () => {
       font-weight: 600;
       font-size: 14px;
       margin-bottom: 4px;
+      
+      @media (max-width: 576px) {
+        font-size: 13px;
+        margin-bottom: 3px;
+      }
     }
 
     .text {
       font-size: 13px;
       line-height: 1.4;
       margin-bottom: 12px;
+      
+      @media (max-width: 576px) {
+        font-size: 12px;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
     }
 
     .retry-button {
@@ -61,6 +78,12 @@ const handleRetry = () => {
       font-size: 12px;
       cursor: pointer;
       transition: background-color 0.2s;
+      
+      @media (max-width: 576px) {
+        padding: 8px 16px;
+        font-size: 13px;
+        width: 100%;
+      }
 
       &:hover {
         background-color: #b91c1c;

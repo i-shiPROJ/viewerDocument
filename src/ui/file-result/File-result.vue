@@ -65,12 +65,22 @@ const currentItem = (currentItem: DocumentList) => {
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 0px 10px 0px #0000001A;
+  margin-bottom: 12px;
+  
+  @media (max-width: 576px) {
+    margin-bottom: 8px;
+  }
 
   .image {
     min-width: 70px;
     height: 70px;
     overflow: hidden;
     border-right: 1px solid #E0E0E0;
+    
+    @media (max-width: 576px) {
+      min-width: 60px;
+      height: 60px;
+    }
 
     img {
       width: 100%;
@@ -85,15 +95,28 @@ const currentItem = (currentItem: DocumentList) => {
     width: 100%;
     display: flex;
     flex-direction: column;
+    
+    @media (max-width: 576px) {
+      padding: 12px;
+    }
 
     .name-document {
       font-size: 16px;
+      
+      @media (max-width: 576px) {
+        font-size: 14px;
+      }
     }
 
     .size-document {
       margin-top: 3px;
       font-size: 14px;
       color: #6C757D;
+      
+      @media (max-width: 576px) {
+        font-size: 12px;
+        margin-top: 2px;
+      }
     }
 
     span {
@@ -128,5 +151,10 @@ const currentItem = (currentItem: DocumentList) => {
   padding: 20px;
   color: #dc2626;
   font-style: italic;
+  
+  @media (max-width: 576px) {
+    padding: 15px;
+    font-size: 14px;
+  }
 }
 </style>

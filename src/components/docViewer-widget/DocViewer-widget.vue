@@ -15,5 +15,10 @@ import mainPanel from "./inside/MainPanel.vue";
   height: 100%;
   display: flex;
   flex-direction: row;
+  overflow-y: scroll;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 </style>

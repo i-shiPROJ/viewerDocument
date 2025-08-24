@@ -112,7 +112,6 @@ const deleteDocument = async () => {
       }, 1000);
     });
     
-
     console.log('Документ удален:', currentItemStore.currentItem?.name);
     currentItemStore.clearCurrentItem();
     
@@ -145,6 +144,14 @@ main {
   .document-container {
     padding: 30px;
     width: 100%;
+    
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+    
+    @media (max-width: 576px) {
+      padding: 15px;
+    }
 
     .document-image {
       width: 424px;
@@ -154,6 +161,21 @@ main {
       float: left;
       margin-right: 60px;
       margin-bottom: 30px;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 16/10;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      
+      @media (max-width: 576px) {
+        max-width: 100%;
+        margin-bottom: 15px;
+      }
 
       img {
         width: 100%;
@@ -165,19 +187,37 @@ main {
 
     .document-content {
       margin-left: 0;
+      
+      @media (max-width: 768px) {
+        margin-left: 0;
+      }
 
       .document-header {
         margin-bottom: 20px;
+        
+        @media (max-width: 576px) {
+          margin-bottom: 15px;
+        }
         
         .control {
           display: flex;
           gap: 15px;
           margin-top: 15px;
+          
+          @media (max-width: 576px) {
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+          }
         }
       }
 
       .delete-error {
         margin: 16px 0;
+        
+        @media (max-width: 576px) {
+          margin: 12px 0;
+        }
       }
 
       .document-description {
@@ -186,6 +226,11 @@ main {
           color: #6C757D;
           white-space: pre-line;
           line-height: 1.6;
+          
+          @media (max-width: 576px) {
+            font-size: 13px;
+            line-height: 1.5;
+          }
         }
       }
     }
@@ -194,6 +239,10 @@ main {
       content: '';
       display: table;
       clear: both;
+      
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
   }
 
@@ -205,6 +254,17 @@ main {
     justify-content: center;
     color: #6C757D;
     font-size: 16px;
+    
+    @media (max-width: 768px) {
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 13px;
+      padding: 15px;
+    }
   }
 }
 </style>

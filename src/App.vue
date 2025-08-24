@@ -27,9 +27,19 @@ import Footer from "./layout/footer/Footer.vue";
 
   .app-body {
     min-height: 100%;
-    width: 1266px;
+    width: 100%;
+    max-width: 1266px;
     display: flex;
     flex-direction: column;
+    padding: 0 20px;
+    
+    @media (max-width: 768px) {
+      padding: 0 15px;
+    }
+    
+    @media (max-width: 576px) {
+      padding: 0 10px;
+    }
   }
 }
 
@@ -43,5 +53,15 @@ import Footer from "./layout/footer/Footer.vue";
   box-shadow: 0px 0px 10px 0px #0000001a;
   overflow: hidden;
   box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0px 2px 8px 0px #00000015;
+  }
 }
 </style>

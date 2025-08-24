@@ -140,12 +140,29 @@ aside {
   border-right: 1px solid #e0e0e0;
   padding: 0px 20px;
   background-color: #fdfdfd;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px;
+    min-height: auto;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 15px;
+  }
 }
 
 .loading {
   text-align: center;
   padding: 20px;
   color: #6c757d;
+  
+  @media (max-width: 576px) {
+    padding: 15px;
+    font-size: 14px;
+  }
 }
 
 .no-results {
@@ -153,5 +170,10 @@ aside {
   padding: 20px;
   color: #6c757d;
   font-style: italic;
+  
+  @media (max-width: 576px) {
+    padding: 15px;
+    font-size: 14px;
+  }
 }
 </style>

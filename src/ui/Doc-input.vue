@@ -1,71 +1,74 @@
 <template>
-  <div>
-    <input type="text" :placeholder="props.tooltip" :value="modelValue" @input="updateValue">
-  </div>
+  <input
+    type="text"
+    :placeholder="props.tooltip"
+    :value="modelValue"
+    @input="updateValue"
+  />
 </template>
 
 <script setup lang="ts">
-import debounce from 'lodash.debounce';
-import { onUnmounted } from 'vue'
+import debounce from "lodash.debounce";
+import { onUnmounted } from "vue";
 
 const props = defineProps({
   tooltip: {
     type: String,
-    default: 'Введите текст'
+    default: "Введите текст",
   },
   debounce: {
     type: Boolean,
-    default: false
+    default: false,
   },
   debounceDelay: {
     type: Number,
-    default: 300
+    default: 300,
   },
   modelValue: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"]);
 
 // Обновляем по debounce
 const debouncedEmit = debounce((value: string) => {
-  emit('update:modelValue', value)
-}, props.debounceDelay)
+  emit("update:modelValue", value);
+}, props.debounceDelay);
 
 const updateValue = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  
+
   if (props.debounce) {
     debouncedEmit(target.value);
   } else {
-    emit('update:modelValue', target.value);
+    emit("update:modelValue", target.value);
   }
-}
+};
 
 onUnmounted(() => {
-  debouncedEmit.cancel()
-})
+  debouncedEmit.cancel();
+});
 </script>
 
 <style lang="less" scoped>
 input {
   width: 100%;
   background: transparent;
-  border: 1.5px solid #E9ECEF;
+  border: 1.5px solid #e9ecef;
   border-radius: 10px;
   outline: none;
   padding: 15px 30px;
-  color: #6C757D;
-  caret-color: #6C757D;
+  color: #6c757d;
+  caret-color: #6c757d;
 
   &:focus {
-    border-color: #E9ECEF;
+    border-color: #e9ecef;
   }
 
   &::placeholder {
-    color: #6C757D;
+    color: #6c757d;
   }
 }
 </style>

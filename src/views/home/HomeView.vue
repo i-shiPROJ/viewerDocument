@@ -12,6 +12,6 @@ import docViewerWidget from '@/components/docViewer-widget/DocViewer-widget.vue'
 <style lang="less" scoped>
   .home-view {
     min-height: 100%;
-    width: 100%; // Добавить это
+    width: 100%;
   }
 </style>

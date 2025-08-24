@@ -4,7 +4,12 @@
     <div v-if="props.files.length > 0">
       <div class="item-result" v-for="item in props.files">
         <div class="image">
-          <img :src="getImg(item.image)" :alt="item.name" />
+          <img 
+            :src="getImg(item.image)" 
+            :alt="item.name" 
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="description" :class="{ 'description-current': item.current }" @click="currentItem(item)">
           <span class="name-document font-semibold">{{ item.name }}</span>
@@ -73,13 +78,15 @@ const currentItem = (currentItem: DocumentList) => {
 
   .image {
     min-width: 70px;
+    max-width: 70px;
     height: 70px;
+
     overflow: hidden;
     border-right: 1px solid #E0E0E0;
     
     @media (max-width: 576px) {
-      min-width: 60px;
-      height: 60px;
+      min-width: 70px;
+      height: 70px;
     }
 
     img {
@@ -87,6 +94,8 @@ const currentItem = (currentItem: DocumentList) => {
       height: 100%;
       object-fit: cover;
       object-position: center;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 

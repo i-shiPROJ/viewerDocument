@@ -2,16 +2,21 @@
   <div>
     <docLabel text="Результаты" />
     <div v-if="props.files.length > 0">
-      <div class="item-result" v-for="item in props.files">
+      <div class="item-result" v-for="item in props.files" :key="item.id">
         <div class="image">
-          <img 
-            :src="getImg(item.image)" 
-            :alt="item.name" 
+          <img
+            :src="getImg(item.image)"
+            :alt="item.name"
             loading="lazy"
             decoding="async"
+            @error="setErrorImg"
           />
         </div>
-        <div class="description" :class="{ 'description-current': item.current }" @click="currentItem(item)">
+        <div
+          class="description"
+          :class="{ 'description-current': item.current }"
+          @click="currentItem(item)"
+        >
           <span class="name-document font-semibold">{{ item.name }}</span>
           <span class="size-document">12 MB</span>
         </div>
@@ -29,26 +34,33 @@
 </template>
 
 <script setup lang="ts">
-import DocLabel from '../Doc-label.vue';
-import type { DocumentList } from '@/types/DocumentList';
-import type { PropType } from 'vue';
-import { useCurrentItemStore } from '@/stores/CurrenItem';
+import DocLabel from "../Doc-label.vue";
+import type { DocumentList } from "@/types/DocumentList";
+import type { PropType } from "vue";
+import { useCurrentItemStore } from "@/stores/CurrenItem";
+import placeHolderFile from "@/assest/file.png";
 
 const currentItemStore = useCurrentItemStore();
 
 const props = defineProps({
   files: {
     type: Array as PropType<DocumentList[]>,
-    default: () => []
+    default: () => [],
   },
   hasError: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const getImg = (img: string | null) => {
-  return img !== null ? img : 'src/assest/file.png';
+  return img !== null ? img : placeHolderFile;
+};
+
+const setErrorImg = (event: Event) => {
+  const img = event.target as HTMLImageElement | null;
+  if (!img) return;
+  img.src = placeHolderFile;
 };
 
 const currentItem = (currentItem: DocumentList) => {
@@ -69,9 +81,9 @@ const currentItem = (currentItem: DocumentList) => {
   flex-direction: row;
   width: 100%;
   background-color: #fff;
-  box-shadow: 0px 0px 10px 0px #0000001A;
+  box-shadow: 0px 0px 10px 0px #0000001a;
   margin-bottom: 12px;
-  
+
   @media (max-width: 576px) {
     margin-bottom: 8px;
   }
@@ -82,8 +94,8 @@ const currentItem = (currentItem: DocumentList) => {
     height: 70px;
 
     overflow: hidden;
-    border-right: 1px solid #E0E0E0;
-    
+    border-right: 1px solid #e0e0e0;
+
     @media (max-width: 576px) {
       min-width: 70px;
       height: 70px;
@@ -104,14 +116,14 @@ const currentItem = (currentItem: DocumentList) => {
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+
     @media (max-width: 576px) {
       padding: 12px;
     }
 
     .name-document {
       font-size: 16px;
-      
+
       @media (max-width: 576px) {
         font-size: 14px;
       }
@@ -120,8 +132,8 @@ const currentItem = (currentItem: DocumentList) => {
     .size-document {
       margin-top: 3px;
       font-size: 14px;
-      color: #6C757D;
-      
+      color: #6c757d;
+
       @media (max-width: 576px) {
         font-size: 12px;
         margin-top: 2px;
@@ -136,7 +148,7 @@ const currentItem = (currentItem: DocumentList) => {
 
   .description:hover {
     cursor: pointer;
-    background-color: #0D6EFD;
+    background-color: #0d6efd;
     color: #fff;
 
     .size-document {
@@ -146,7 +158,7 @@ const currentItem = (currentItem: DocumentList) => {
 
   .description-current {
     cursor: pointer;
-    background-color: #0D6EFD;
+    background-color: #0d6efd;
     color: #fff;
 
     .size-document {
@@ -160,7 +172,7 @@ const currentItem = (currentItem: DocumentList) => {
   padding: 20px;
   color: #dc2626;
   font-style: italic;
-  
+
   @media (max-width: 576px) {
     padding: 15px;
     font-size: 14px;
